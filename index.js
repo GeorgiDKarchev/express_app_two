@@ -30,10 +30,14 @@ app.engine('perscholas', (filePath, options, callback) => {
     })
 });
 
-app.set("views", "./views")
-app.set("view engine", "perscholas")
+app.set("views", "./views"), //sets the views for the app
+app.set("view engine","perscholas"), //sets the template engine for the app
 // using css
-app.use(express.static("./styles"))
+app.use(express.static("./styles")),
+
+//image 
+app.use(express.static('./assets'));
+
 
 // rendering first view 
 app.get('/', (req, res) => {
@@ -58,10 +62,6 @@ app.post('/package', (req, res)=>{
     res.send("Send a message")
 });
 
-//settig the server and start it 
-app.listen(PORT, ()=>{
-    console.log('Server is running')
-})
 
 
 //middleware
@@ -71,12 +71,25 @@ app.use((req,res,next) =>{
     next();
 });
 
+
+//image
+ app.get('/donload', (req, res)=>{
+    res.download('./assets/Photo123.jpeg');
+ });
+
+
 //rerouting all routes to main page
 app.all('*', (req,res)=>{
     res.redirect('/');
 });
 
 app.use(morgan('dev'));
+
+//settig the server and start it 
+app.listen(PORT, ()=>{
+    console.log('Server is running')
+})
+
 
 
 

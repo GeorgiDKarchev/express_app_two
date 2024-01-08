@@ -10,6 +10,13 @@
     <div id="app">
       <h1>#title#</h1>
       <div>#content#</div>
+    <div>
+       <img src="http://localhost:3000/donload" width="500px height="500px"/>
+    </div>
+
+    <a href ="http://localhost:3000/donload">
+            <button> Click here to donload</button>
+    </a>
     </div>
   </body>
 </html>
